@@ -22,7 +22,7 @@ public class Main {
         System.out.println(formulas[1]);
         Formula[] result= solve(formulas);
         if (result!=null) {
-            System.out.println("Vastus :");
+            System.out.println("Answer :");
             System.out.println(result[0]);
             System.out.println(result[1]);
         }
@@ -39,7 +39,7 @@ public class Main {
         System.out.println(formulas3[2]);
         result= solve(formulas3);
         if (result!=null) {
-            System.out.println("Vastus :");
+            System.out.println("Answer :");
             System.out.println(result[0]);
             System.out.println(result[1]);
             System.out.println(result[2]);
@@ -54,24 +54,24 @@ public class Main {
             for (int i = 0; i < size; i++) {
                 replaced[i] = formulas[i];
                 for (int j = 0; j < i; j++) {
-                    System.out.println("asenda X" + j + " valemis " + i);
+                    System.out.println("replace X" + j + " in formula " + i);
                     replaced[i] = expr[j].applyTo(replaced[i]);
                     System.out.println(replaced[i]);
                 }
-                System.out.println("leiame X" + i + " valemist " + i);
+                System.out.println("find X" + i + " from formula " + i);
                 expr[i] = replaced[i].findX(i);
                 System.out.println(expr[i]);
             }
             for (int i = size - 2; i >= 0; i--) {
                 for (int j = size - 1; j > i; j--) {
-                    System.out.println("asendame tagasi tulemusele " + i + " lahendi " + j);
+                    System.out.println("replace to the result " + i + " solution " + j);
                     expr[i] = expr[j].applyTo(expr[i]);
                     System.out.println(expr[i]);
                 }
             }
             return expr;
         }catch (ArithmeticException ae){
-            System.out.println("ühest lahendit ei leidunud ");
+            System.out.println("solution could not be found ");
         }
         return null;
     }
